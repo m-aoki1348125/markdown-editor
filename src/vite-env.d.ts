@@ -5,24 +5,13 @@ declare module '*.module.css' {
   export default classes
 }
 
-interface FilePickerAcceptType {
-  description?: string
-  accept: Record<string, string[]>
-}
-
-interface OpenFilePickerOptions {
-  types?: FilePickerAcceptType[]
-  multiple?: boolean
-  excludeAcceptAllOption?: boolean
-}
-
-interface SaveFilePickerOptions {
-  suggestedName?: string
-  types?: FilePickerAcceptType[]
-  excludeAcceptAllOption?: boolean
+interface ElectronAPI {
+  fileOpen: () => Promise<{ content: string; filePath: string; name: string } | null>
+  fileSave: (args: { filePath: string; content: string }) => Promise<{ filePath: string; name: string }>
+  fileSaveAs: (args: { content: string; suggestedName: string }) => Promise<{ filePath: string; name: string } | null>
+  setTitle: (title: string) => Promise<void>
 }
 
 interface Window {
-  showOpenFilePicker(options?: OpenFilePickerOptions): Promise<FileSystemFileHandle[]>
-  showSaveFilePicker(options?: SaveFilePickerOptions): Promise<FileSystemFileHandle>
+  electronAPI: ElectronAPI
 }

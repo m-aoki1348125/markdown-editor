@@ -7,20 +7,20 @@ export function useMarkdownDocument() {
     content: DEFAULT_CONTENT,
     fileName: 'untitled.md',
     isDirty: false,
-    fileHandle: null,
+    filePath: null,
   })
 
   const updateContent = useCallback((content: string) => {
     setDoc((prev) => ({ ...prev, content, isDirty: true }))
   }, [])
 
-  const markSaved = useCallback((fileName: string, handle: FileSystemFileHandle | null) => {
-    setDoc((prev) => ({ ...prev, isDirty: false, fileName, fileHandle: handle }))
+  const markSaved = useCallback((fileName: string, filePath: string | null) => {
+    setDoc((prev) => ({ ...prev, isDirty: false, fileName, filePath }))
   }, [])
 
   const loadDocument = useCallback(
-    (content: string, fileName: string, handle: FileSystemFileHandle) => {
-      setDoc({ content, fileName, isDirty: false, fileHandle: handle })
+    (content: string, fileName: string, filePath: string) => {
+      setDoc({ content, fileName, isDirty: false, filePath })
     },
     [],
   )
@@ -30,7 +30,7 @@ export function useMarkdownDocument() {
       content: '',
       fileName: 'untitled.md',
       isDirty: false,
-      fileHandle: null,
+      filePath: null,
     })
   }, [])
 

@@ -3,8 +3,8 @@ import type { DocumentState } from '../types/index.ts'
 import { openMarkdownFile, saveMarkdownFile } from '../utils/fileHelpers.ts'
 
 interface Handlers {
-  markSaved: (fileName: string, handle: FileSystemFileHandle | null) => void
-  loadDocument: (content: string, fileName: string, handle: FileSystemFileHandle) => void
+  markSaved: (fileName: string, filePath: string | null) => void
+  loadDocument: (content: string, fileName: string, filePath: string) => void
   newDocument: () => void
 }
 
@@ -17,13 +17,14 @@ export function useFileOperations(doc: DocumentState, handlers: Handlers) {
   const handleOpen = useCallback(async () => {
     if (doc.isDirty && !confirm('変更が保存されていません。破棄しますか？')) return
     const result = await openMarkdownFile()
-    if (result) handlers.loadDocument(result.content, result.name, result.handle)
+    if (result) handlers.loadDocument(result.content, result.name, result.filePath)
   }, [doc.isDirty, handlers])
 
   const handleSave = useCallback(async () => {
-    const handle = await saveMarkdownFile(doc.fileHandle, doc.content, doc.fileName)
-    const name = handle ? (await handle.getFile()).name : doc.fileName
-    handlers.markSaved(name, handle)
+    const result = await saveMarkdownFile(doc.filePath, doc.content, doc.fileName)
+    if (result) {
+      handlers.markSaved(result.name, result.filePath)
+    }
   }, [doc, handlers])
 
   useEffect(() => {
@@ -36,10 +37,14 @@ export function useFileOperations(doc: DocumentState, handlers: Handlers) {
         e.preventDefault()
         handleOpen()
       }
+      if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+        e.preventDefault()
+        handleNew()
+      }
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [handleSave, handleOpen])
+  }, [handleSave, handleOpen, handleNew])
 
   return { handleNew, handleOpen, handleSave }
 }

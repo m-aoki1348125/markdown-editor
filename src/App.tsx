@@ -27,7 +27,9 @@ export default function App() {
   const editorViewRef = useRef<EditorView | null>(null)
 
   useEffect(() => {
-    document.title = `${doc.isDirty ? '* ' : ''}${doc.fileName} - Markdown Editor`
+    const title = `${doc.isDirty ? '* ' : ''}${doc.fileName} - Markdown Editor`
+    document.title = title
+    window.electronAPI?.setTitle(title)
   }, [doc.fileName, doc.isDirty])
 
   useEffect(() => {

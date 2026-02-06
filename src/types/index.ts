@@ -2,7 +2,7 @@ export interface DocumentState {
   content: string
   fileName: string
   isDirty: boolean
-  fileHandle: FileSystemFileHandle | null
+  filePath: string | null
 }
 
 export type Theme = 'light' | 'dark'
