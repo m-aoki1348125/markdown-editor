@@ -25,4 +25,4 @@ dist-ssr
 
 # Electron
 dist-electron
-release
+release/win-unpacked
