@@ -1,0 +1,101 @@
+/* Light mode code block styling */
+:root[data-theme="light"] .hljs {
+  background: #f1f3f5;
+  color: #1a1a2e;
+}
+
+:root[data-theme="light"] .hljs-keyword,
+:root[data-theme="light"] .hljs-selector-tag {
+  color: #7048e8;
+  font-weight: 500;
+}
+
+:root[data-theme="light"] .hljs-string,
+:root[data-theme="light"] .hljs-addition {
+  color: #2b8a3e;
+}
+
+:root[data-theme="light"] .hljs-number,
+:root[data-theme="light"] .hljs-literal {
+  color: #e67700;
+}
+
+:root[data-theme="light"] .hljs-comment {
+  color: #868e96;
+  font-style: italic;
+}
+
+:root[data-theme="light"] .hljs-built_in,
+:root[data-theme="light"] .hljs-type {
+  color: #d9480f;
+}
+
+:root[data-theme="light"] .hljs-title,
+:root[data-theme="light"] .hljs-function {
+  color: #4263eb;
+}
+
+:root[data-theme="light"] .hljs-attr,
+:root[data-theme="light"] .hljs-attribute {
+  color: #e67700;
+}
+
+:root[data-theme="light"] .hljs-variable,
+:root[data-theme="light"] .hljs-params {
+  color: #1a1a2e;
+}
+
+:root[data-theme="light"] .hljs-deletion {
+  color: #e03131;
+}
+
+/* Dark mode code block styling */
+:root[data-theme="dark"] .hljs {
+  background: #161b22;
+  color: #e6edf3;
+}
+
+:root[data-theme="dark"] .hljs-keyword,
+:root[data-theme="dark"] .hljs-selector-tag {
+  color: #ff7b72;
+  font-weight: 500;
+}
+
+:root[data-theme="dark"] .hljs-string,
+:root[data-theme="dark"] .hljs-addition {
+  color: #a5d6ff;
+}
+
+:root[data-theme="dark"] .hljs-number,
+:root[data-theme="dark"] .hljs-literal {
+  color: #79c0ff;
+}
+
+:root[data-theme="dark"] .hljs-comment {
+  color: #6e7681;
+  font-style: italic;
+}
+
+:root[data-theme="dark"] .hljs-built_in,
+:root[data-theme="dark"] .hljs-type {
+  color: #ffa657;
+}
+
+:root[data-theme="dark"] .hljs-title,
+:root[data-theme="dark"] .hljs-function {
+  color: #d2a8ff;
+}
+
+:root[data-theme="dark"] .hljs-attr,
+:root[data-theme="dark"] .hljs-attribute {
+  color: #79c0ff;
+}
+
+:root[data-theme="dark"] .hljs-variable,
+:root[data-theme="dark"] .hljs-params {
+  color: #e6edf3;
+}
+
+:root[data-theme="dark"] .hljs-deletion {
+  color: #ffa198;
+}
